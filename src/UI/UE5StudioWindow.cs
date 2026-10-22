@@ -169,7 +169,7 @@ namespace OutwardUE5Overhaul.UI
             {
                 DrawWindowContents(plugin);
                 GUI.DragWindow(new Rect(0f, 0f, 10000f, 28f));
-            }, "UNREAL ENGINE 5 GRAPHICS STUDIO (OUTWARD 2026 OVERHAUL v1.6)", _windowStyle);
+            }, "UNREAL ENGINE 5 GRAPHICS STUDIO (OUTWARD 2026 OVERHAUL v1.6.1)", _windowStyle);
         }
 
         private void DrawWindowContents(OutwardUE5OverhaulPlugin plugin)

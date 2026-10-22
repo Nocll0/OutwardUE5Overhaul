@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.6.1
+- Updated official GitHub repository link (`https://github.com/Nocll0/OutwardUE5Overhaul`) in package manifest.
+
 ## 1.6.0
 - Fixed a `LightQuality` vertical distance culling bug (`EnabledDistances.y = -1`) where candles, sconces, and indoor point lights remained off until the player stood right next to them.
 - Hooked both `LightQuality.Start` and `LightQuality.InitLightSettings` and extended positive light activation distances to `45m+` (`2.50x`).
