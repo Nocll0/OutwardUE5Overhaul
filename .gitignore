@@ -1,0 +1,7 @@
+bin/
+dist/
+thunderstore_package/
+*.zip
+*.user
+*.suo
+.vs/
