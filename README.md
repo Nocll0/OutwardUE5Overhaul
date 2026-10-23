@@ -56,7 +56,7 @@ Each comparison below includes an **automatic A/B toggle animation** (labeled **
 
 ---
 
-### 5. Berg Inn Interior — Firepit & Candelabra Multi-Bounce GI
+### 5. Berg Player House Interior — Firepit & Candelabra Multi-Bounce GI
 *Isolated indoor cubemap reflections and warm fire/candle radiosity bounce across stone masonry, wooden floorboards, and brass fixtures.*
 
 ![Comparison 7 Animated A/B](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/compare7.gif)
