@@ -49,7 +49,7 @@ $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 $manifestJson = @"
 {
   "name": "Outward_UE5_Overhaul",
-  "version_number": "1.6.1",
+  "version_number": "1.6.2",
   "website_url": "https://github.com/Nocll0/OutwardUE5Overhaul",
   "description": "Complete Unreal Engine 5 Graphics Overhaul for Outward Definitive Edition: Lumen GI & Solar/Torch Bounce, VSM Contact Shadows, Dual-Layer AO, ACES Filmic HDR, 2K Water & SSR, and Nanite LOD/4K PBR.",
   "dependencies": [
@@ -144,8 +144,8 @@ Copy-Item -Path "$outDir\OutwardUE5Overhaul.dll" -Destination "$tsStageDir\plugi
 # Remove old zip files and build the official Thunderstore zip archive (using forward slashes for POSIX/Thunderstore compatibility)
 Get-ChildItem -Path $distDir -Filter "*.zip" | Remove-Item -Force
 Get-ChildItem -Path $projectDir -Filter "*-Thunderstore.zip" | Remove-Item -Force
-$zipPath = "$distDir\Nocll0-Outward_UE5_Overhaul-1.6.1.zip"
-$rootZipPath = "$projectDir\Outward_UE5_Overhaul-1.6.1-Thunderstore.zip"
+$zipPath = "$distDir\Nocll0-Outward_UE5_Overhaul-1.6.2.zip"
+$rootZipPath = "$projectDir\Outward_UE5_Overhaul-1.6.2-Thunderstore.zip"
 if (Test-Path $rootZipPath) { Remove-Item $rootZipPath -Force }
 
 Add-Type -AssemblyName System.IO.Compression

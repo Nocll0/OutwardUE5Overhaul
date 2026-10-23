@@ -4,6 +4,69 @@ A complete engine-level graphics overhaul for **Outward Definitive Edition** tha
 
 ---
 
+## Visual Comparisons (Before vs. After)
+
+> **Interactive Draggable Slider Showcase**: [**Click here to open the live draggable Before/After slider page in your browser**](https://htmlpreview.github.io/?https://github.com/Nocll0/OutwardUE5Overhaul/blob/main/docs/index.html)
+
+Each comparison below includes an **automatic A/B toggle animation** (labeled **`BEFORE: VANILLA OUTWARD`** vs. **`AFTER: UE5 2026 OVERHAUL`** in the top-left corner) followed by **side-by-side full-resolution (`2560x1440`) static screenshots** you can click to enlarge.
+
+---
+
+### 1. Stormy Sunset, Volumetric Rain Scatter & Stone PBR Relief
+*Per-pixel HDR sunset scattering through rain, enhanced stone masonry normal relief (`+35%`), and warm emissive particle bounce.*
+
+![Comparison 1 Animated A/B](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/compare1.gif)
+
+| **BEFORE — Vanilla Outward** *(Click for 1440p)* | **AFTER — UE5 2026 Overhaul** *(Click for 1440p)* |
+| :---: | :---: |
+| [![Before 1](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/before1.jpg)](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/before1.jpg) | [![After 1](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/after1.jpg)](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/after1.jpg) |
+
+---
+
+### 2. Night Sky, Lighthouse Beacon & Physical HDR Bloom
+*Natural ACES night sky contrast, volumetric cyan beacon glow on the lighthouse structure, and wide-diffusion physical HDR bloom.*
+
+![Comparison 2 Animated A/B](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/compare2.gif)
+
+| **BEFORE — Vanilla Outward** *(Click for 1440p)* | **AFTER — UE5 2026 Overhaul** *(Click for 1440p)* |
+| :---: | :---: |
+| [![Before 2](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/before2.jpg)](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/before2.jpg) | [![After 2](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/after2.jpg)](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/after2.jpg) |
+
+---
+
+### 3. Berg Night Courtyard — Warm Lantern Falloff & Cobblestone PBR Relief
+*Extended `2.0x` point-light range and warm radiosity bounce replace vanilla's flat cold wash while bringing out deep cobblestone and woodwork micro-relief.*
+
+![Comparison 3 Animated A/B](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/compare3.gif)
+
+| **BEFORE — Vanilla Outward** *(Click for 1440p)* | **AFTER — UE5 2026 Overhaul** *(Click for 1440p)* |
+| :---: | :---: |
+| [![Before 3](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/before3.jpg)](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/before3.jpg) | [![After 3](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/after3.jpg)](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/after3.jpg) |
+
+---
+
+### 4. City Alleyway — Extended Light Activation & Dual-Layer AO
+*Distant streetlamps remain active across the entire street (`45m+` activation) while MSVO + SSAO ground stonework and balustrades.*
+
+![Comparison 4 Animated A/B](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/compare4.gif)
+
+| **BEFORE — Vanilla Outward** *(Click for 1440p)* | **AFTER — UE5 2026 Overhaul** *(Click for 1440p)* |
+| :---: | :---: |
+| [![Before 4](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/before4.jpg)](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/before4.jpg) | [![After 4](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/after4.jpg)](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/after4.jpg) |
+
+---
+
+### 5. Berg Inn Interior — Firepit & Candelabra Multi-Bounce GI
+*Isolated indoor cubemap reflections and warm fire/candle radiosity bounce across stone masonry, wooden floorboards, and brass fixtures.*
+
+![Comparison 7 Animated A/B](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/compare7.gif)
+
+| **BEFORE — Vanilla Outward** *(Click for 1440p)* | **AFTER — UE5 2026 Overhaul** *(Click for 1440p)* |
+| :---: | :---: |
+| [![Before 7](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/before7.jpg)](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/before7.jpg) | [![After 7](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/after7.jpg)](https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media/after7.jpg) |
+
+---
+
 ## Requirements & Dependencies
 
 - **Outward Definitive Edition**

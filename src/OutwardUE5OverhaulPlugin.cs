@@ -18,7 +18,7 @@ namespace OutwardUE5Overhaul
     {
         public const string GUID = "com.argon.outward.ue5overhaul";
         public const string NAME = "Outward UE5 Graphics Overhaul (2026 Edition)";
-        public const string VERSION = "1.6.1";
+        public const string VERSION = "1.6.2";
 
         public static OutwardUE5OverhaulPlugin Instance { get; private set; }
         public static ManualLogSource Log { get; private set; }

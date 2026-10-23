@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.6.2
+- Added labeled Before/After animated A/B comparison GIFs, 1440p side-by-side comparisons, and interactive draggable slider showcase to documentation.
+
 ## 1.6.1
 - Updated official GitHub repository link (`https://github.com/Nocll0/OutwardUE5Overhaul`) in package manifest.
 

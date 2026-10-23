@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Outward UE5 Graphics Overhaul (2026) — Interactive Before/After Comparison</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card: #131b2e;
+      --border: #263554;
+      --accent: #38bdf8;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      padding: 32px 20px 64px;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg, #fff, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 36px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+    }
+    .card h2 {
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+    .compare-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 8px;
+      user-select: none;
+      background: #000;
+    }
+    .compare-wrap img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+    .img-before {
+      z-index: 2;
+      clip-path: inset(0 50% 0 0);
+    }
+    .img-after {
+      z-index: 1;
+    }
+    .divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: var(--accent);
+      z-index: 3;
+      transform: translateX(-50%);
+      pointer-events: none;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+    }
+    .handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #1058be;
+      border: 2px solid #7dd3fc;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+      pointer-events: none;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.6);
+    }
+    .badge {
+      position: absolute;
+      top: 16px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      z-index: 5;
+      pointer-events: none;
+    }
+    .badge-before {
+      left: 16px;
+      background: rgba(24, 28, 36, 0.88);
+      border: 1px solid #64748b;
+      color: #f8fafc;
+    }
+    .badge-after {
+      right: 16px;
+      background: rgba(16, 88, 190, 0.90);
+      border: 1px solid #38bdf8;
+      color: #ffffff;
+    }
+    .slider-input {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: ew-resize;
+      z-index: 6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Outward UE5 Graphics Overhaul (2026 Photorealistic Edition)</h1>
+      <p>Drag the slider left or right on any scene below to compare <strong>BEFORE (Vanilla Outward)</strong> vs <strong>AFTER (UE5 2026 Overhaul)</strong>.</p>
+    </header>
+    <div id="gallery"></div>
+  </div>
+
+  <script>
+    const scenes = [
+      { id: 1, title: "1. Stormy Sunset, Volumetric Rain Scatter & Stone PBR Relief", desc: "Per-pixel HDR sunset scattering through rain, enhanced masonry normal relief (+35%), and warm emissive bounce." },
+      { id: 2, title: "2. Night Sky, Lighthouse Beacon & Physical HDR Bloom", desc: "Natural ACES night sky contrast, volumetric cyan beacon glow, and smooth wide-diffusion HDR bloom." },
+      { id: 3, title: "3. Berg Night Courtyard — Warm Lantern Falloff & Cobblestone Relief", desc: "Extended 2.0x point-light range and warm radiosity bounce replace vanilla's flat cold wash while bringing out deep cobblestone and woodwork relief." },
+      { id: 4, title: "4. City Alleyway — Extended Light Activation & Dual-Layer AO", desc: "Distant streetlamps remain active across the entire street while MSVO + SSAO ground stonework and balustrades." },
+      { id: 7, title: "5. Berg Inn Interior — Firepit & Candelabra Multi-Bounce GI", desc: "Isolated indoor cubemap reflections and warm fire/candle radiosity bounce across masonry, wood floorboards, and brass fixtures." },
+      { id: 5, title: "6. Tavern Counter — Extended Candle Falloff & Natural Shadow Depth", desc: "Candles stay active across the room and cast warm, natural falloff across wooden beams and stone walls." },
+      { id: 6, title: "7. Night Street & Armor Specular Reflections", desc: "Metallic armor and stonework respond dynamically to local lanterns and moonlight." }
+    ];
+
+    const baseUrl = "https://raw.githubusercontent.com/Nocll0/OutwardUE5Overhaul/main/media";
+    const gallery = document.getElementById("gallery");
+
+    scenes.forEach(s => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <h2>${s.title}</h2>
+        <p>${s.desc}</p>
+        <div class="compare-wrap">
+          <img class="img-after" src="${baseUrl}/after${s.id}.jpg" alt="After ${s.id}" />
+          <img class="img-before" id="before-${s.id}" src="${baseUrl}/before${s.id}.jpg" alt="Before ${s.id}" />
+          <div class="divider" id="div-${s.id}"></div>
+          <div class="handle" id="hdl-${s.id}">&#8596;</div>
+          <div class="badge badge-before">BEFORE: VANILLA OUTWARD</div>
+          <div class="badge badge-after">AFTER: UE5 2026 OVERHAUL</div>
+          <input type="range" min="0" max="100" value="50" class="slider-input" data-id="${s.id}" />
+        </div>
+      `;
+      gallery.appendChild(card);
+    });
+
+    document.querySelectorAll(".slider-input").forEach(input => {
+      input.addEventListener("input", e => {
+        const id = e.target.getAttribute("data-id");
+        const val = e.target.value;
+        document.getElementById(`before-${id}`).style.clipPath = `inset(0 ${100 - val}% 0 0)`;
+        document.getElementById(`div-${id}`).style.left = `${val}%`;
+        document.getElementById(`hdl-${id}`).style.left = `${val}%`;
+      });
+    });
+  </script>
+</body>
+</html>
